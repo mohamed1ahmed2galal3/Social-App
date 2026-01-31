@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getPosts } from '../Services/post'
-import Loading from '../Components/loading'
+import Loading from '../Components/Loading'
 import PostCard from '../Components/Post/PostCard'
 import PostForm from '../Components/Post/PostForm'
 import { useQuery } from '@tanstack/react-query'
