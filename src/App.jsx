@@ -5,7 +5,7 @@ import FeedPage from './Pages/FeedPage'
 import AuthLayout from './Layout/AuthLayout'
 import RegisterPage from './Pages/RegisterPage'
 import LoginPage from './Pages/LoginPage'
-import SinglePostpage from './Pages/SinglePostpage'
+import SinglePostPage from './Pages/SinglePostPage'
 import {HeroUIProvider} from "@heroui/react";
 import { ProtectedRoute } from './Components/ProtectedRoute';
 import { AuthProtectedRoute } from './Components/AuthProtectedRoute'
@@ -25,7 +25,7 @@ const routers = createBrowserRouter([
     children: [
       { index: true, element: <ProtectedRoute><FeedPage /></ProtectedRoute> },
       { path: "profile", element: <ProtectedRoute><ProfilePage /></ProtectedRoute> },
-      { path: "single-post/:id", element: <ProtectedRoute><SinglePostpage /></ProtectedRoute> },
+      { path: "single-post/:id", element: <ProtectedRoute><SinglePostPage /></ProtectedRoute> },
       { path: "user-posts", element: <ProtectedRoute><UserPostsPage /></ProtectedRoute> },
       { path: "profile/update-profile", element: <ProtectedRoute><UpdateProfilePage /></ProtectedRoute> },
       { path: "*", element: <NotFoundPage /> } // ← هنا لأي route غير معروف
