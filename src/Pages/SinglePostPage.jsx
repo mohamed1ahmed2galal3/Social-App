@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getPostApi } from '../Services/post';
-import Loading from '../Components/loading';
+import Loading from '../Components/Loading';
 import PostCard from '../Components/Post/PostCard';
 
 export default function SinglePostpage() {
