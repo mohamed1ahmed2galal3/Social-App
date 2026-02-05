@@ -7,8 +7,6 @@ export async function getLoggedUserData(){
         const {data} =await axios.get('https://linked-posts.routemisr.com/users/profile-data'
             ,{headers:{token:localStorage.getItem('token')},
         });
-        console.log(data);
-        
         return data
     }
     catch(err){
