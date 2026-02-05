@@ -28,7 +28,7 @@ export default function PostComment({
                   : comment.commentCreator.photo
               }
               onError={(e) => (e.target.src = PlaceHolderImage)}
-              className="h-8 w-8 rounded-full object-cover flex-shrink-0"
+              className="h-8 w-8 rounded-full object-cover shrink-0"
               alt={comment.commentCreator.name}
             />
 
@@ -44,7 +44,7 @@ export default function PostComment({
                   {comment.commentCreator.name}
                 </p>
 
-                <p className="text-sm text-slate-700 dark:text-slate-200 break-words">
+                <p className="text-sm text-slate-700 dark:text-slate-200 wrap-break-word">
                   {comment.content}
                 </p>
               </div>

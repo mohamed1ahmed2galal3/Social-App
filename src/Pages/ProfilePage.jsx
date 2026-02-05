@@ -143,7 +143,7 @@ export default function ProfilePage() {
             <span className="material-symbols-outlined text-4xl">post_add</span>
           </div>
           <h4 className="text-lg font-bold mb-1">No posts yet</h4>
-          <p className="text-[#617589] max-w-[280px] sm:max-w-[320px] mb-6">
+          <p className="text-[#617589] max-w-70 sm:max-w-[320px] mb-6">
             Start sharing your thoughts, photos, and updates with your network.
           </p>
           <Link

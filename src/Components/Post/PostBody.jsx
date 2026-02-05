@@ -9,7 +9,7 @@ export default function PostBody({ body, image, id }) {
         className="block space-y-3 transition-opacity duration-200 hover:opacity-90"
       >
         {body && (
-          <p className="text-sm sm:text-[15px] py-1 text-slate-700 dark:text-slate-200 leading-relaxed break-words">
+          <p className="text-sm sm:text-[15px] py-1 text-slate-700 dark:text-slate-200 leading-relaxed wrap-break-word">
             {body}
           </p>
         )}

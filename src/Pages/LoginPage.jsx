@@ -7,7 +7,7 @@ import { scheme } from '../Schema/LoginSchema';
 import { AuthContext } from '../Context/AuthContext';
 import { sendLoginData } from '../Services/login';
 
-export default function Loginpage() {
+export default function LoginPage() {
   const { setIsLoggedIn } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const [apiError, setApiError] = useState('');
@@ -33,7 +33,7 @@ export default function Loginpage() {
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-gray-50 dark:bg-slate-900 px-3">
-      <div className="bg-white dark:bg-slate-900 py-10 px-6 sm:px-10 shadow-2xl rounded-2xl w-full sm:w-[400px]">
+      <div className="bg-white dark:bg-slate-900 py-10 px-6 sm:px-10 shadow-2xl rounded-2xl w-full sm:w-100">
         <h2 className="text-2xl font-semibold text-slate-800 dark:text-white text-center">Log In</h2>
 
         <form onSubmit={handleSubmit(signIn)} className="mt-8 flex flex-col gap-5">

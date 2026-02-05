@@ -22,7 +22,7 @@ export default function PostHeader({ photo, name, date, postId, userId, deletePo
           src={photo}
           onError={(e) => (e.target.src = PlaceHolderImage)}
           alt={name}
-          className="h-9 w-9 rounded-full object-cover ring-1 ring-slate-200 flex-shrink-0"
+          className="h-9 w-9 rounded-full object-cover ring-1 ring-slate-200 shrink-0"
         />
 
         <div className="min-w-0">

@@ -128,7 +128,7 @@ export default function PostForm() {
             />
           </svg>
 
-          <span className="truncate max-w-[160px]">
+          <span className="truncate max-w-40">
             {imageName || "Add image"}
           </span>
 

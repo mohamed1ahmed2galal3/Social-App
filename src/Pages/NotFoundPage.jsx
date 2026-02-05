@@ -5,7 +5,7 @@ export default function NotFoundPage() {
   return (
     <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden bg-gray-50 dark:bg-slate-900">
       <main className="flex-1 flex flex-col items-center justify-center px-4 sm:px-6 py-12">
-        <div className="w-full max-w-[400px] sm:max-w-[600px] flex flex-col items-center text-center">
+        <div className="w-full max-w-100 sm:max-w-150 flex flex-col items-center text-center">
           {/* 404 Heading */}
           <h1 className="text-blue-500 dark:text-blue-400 tracking-tighter text-[120px] font-extrabold leading-none pb-2">
             404
@@ -13,7 +13,7 @@ export default function NotFoundPage() {
 
           {/* Minimalist Illustration */}
           <div className="flex w-full justify-center p-4 mb-8">
-            <div className="relative w-full max-w-[350px] sm:max-w-[500px] aspect-[4/3] rounded-xl flex items-center justify-center bg-blue-100/30 dark:bg-blue-900/20 overflow-hidden">
+            <div className="relative w-full max-w-87.5 sm:max-w-125 aspect-4/3 rounded-xl flex items-center justify-center bg-blue-100/30 dark:bg-blue-900/20 overflow-hidden">
               {/* Placeholder Minimalist Shapes */}
               <div className="flex flex-col items-center gap-4">
                 <div className="flex gap-2">
