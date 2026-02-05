@@ -25,11 +25,14 @@ export default function SinglePostpage() {
   },[])
 
   return <>
-    {loading ? 
-      <Loading/> :
-      <section className="max-w-xl mx-auto px-4 py-6 space-y-6 ">
-        <PostCard post={post} commentsLimit={true}/>
+    {loading ? (
+      <div className="flex justify-center items-center h-screen">
+        <Loading />
+      </div>
+    ) : (
+      <section className="max-w-xl mx-auto px-4 py-6 space-y-6">
+        <PostCard post={post} commentsLimit={true} />
       </section>
-    }
+    )}
   </>
 }

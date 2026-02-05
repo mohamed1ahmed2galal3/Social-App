@@ -3,14 +3,17 @@ import {
   Navbar as HeroNavbar,
   NavbarBrand,
   NavbarContent,
-  NavbarItem
+  NavbarItem,
+  NavbarMenuToggle,
+  NavbarMenu,
+  NavbarMenuItem
 } from "@heroui/react"
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../Context/AuthContext'
 
 export default function Navbar() {
 
-  const { isLoggedIn, setIsLoggedIn , setUserData} = useContext(AuthContext)
+  const { isLoggedIn, setIsLoggedIn, setUserData } = useContext(AuthContext)
 
   function logOut() {
     localStorage.removeItem('token')
@@ -20,20 +23,23 @@ export default function Navbar() {
 
   return (
     <HeroNavbar
-      className="bg-white border-b border-gray-100 px-3 py-2 shadow-sm"
+      maxWidth="xl"
+      className="bg-white border-b border-slate-100 px-3 shadow-sm"
     >
+      {/* Mobile Toggle */}
+      <NavbarMenuToggle className="sm:hidden" />
 
       {/* Brand */}
       <NavbarBrand>
         <Link
           to="/"
-          className="text-2xl font-bold text-gray-800 tracking-tight"
+          className="text-xl sm:text-2xl font-bold text-slate-800 tracking-tight"
         >
           Social<span className="text-blue-500">App</span>
         </Link>
       </NavbarBrand>
 
-      {/* Links */}
+      {/* Desktop Links */}
       <NavbarContent
         className="hidden sm:flex items-center gap-5"
         justify="end"
@@ -43,7 +49,7 @@ export default function Navbar() {
             <NavbarItem>
               <Link
                 to="profile"
-                className="text-md font-medium text-gray-600 hover:text-blue-500 transition-colors"
+                className="text-sm font-medium text-slate-600 hover:text-blue-500 transition"
               >
                 Profile
               </Link>
@@ -52,7 +58,7 @@ export default function Navbar() {
             <NavbarItem>
               <button
                 onClick={logOut}
-                className="cursor-pointer text-md font-medium text-gray-600 hover:text-red-500 transition-colors"
+                className="cursor-pointer text-sm font-medium text-slate-600 hover:text-red-500 transition"
               >
                 Log out
               </button>
@@ -63,7 +69,7 @@ export default function Navbar() {
             <NavbarItem>
               <Link
                 to="login"
-                className="text-sm font-medium text-gray-600 hover:text-blue-500 transition-colors"
+                className="text-sm font-medium text-slate-600 hover:text-blue-500 transition"
               >
                 Login
               </Link>
@@ -74,8 +80,7 @@ export default function Navbar() {
                 to="register"
                 className="px-4 py-2 rounded-full text-sm font-medium
                            border border-blue-500 text-blue-500
-                           hover:bg-blue-500 hover:text-white
-                           transition-all duration-200"
+                           hover:bg-blue-500 hover:text-white transition"
               >
                 Register
               </Link>
@@ -84,6 +89,30 @@ export default function Navbar() {
         )}
       </NavbarContent>
 
+      {/* Mobile Menu */}
+      <NavbarMenu>
+        {isLoggedIn ? (
+          <>
+            <NavbarMenuItem>
+              <Link to="profile">Profile</Link>
+            </NavbarMenuItem>
+
+            <NavbarMenuItem>
+              <button onClick={logOut}>Log out</button>
+            </NavbarMenuItem>
+          </>
+        ) : (
+          <>
+            <NavbarMenuItem>
+              <Link to="login">Login</Link>
+            </NavbarMenuItem>
+
+            <NavbarMenuItem>
+              <Link to="register">Register</Link>
+            </NavbarMenuItem>
+          </>
+        )}
+      </NavbarMenu>
     </HeroNavbar>
   )
 }

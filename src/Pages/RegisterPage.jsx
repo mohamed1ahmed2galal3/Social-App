@@ -43,42 +43,112 @@ export default function Registerpage() {
       setLoading(false)
   }
 
-  return <div className='min-h-screen flex justify-center items-center'>
-      <div className='bg-white py-10 px-6 shadow-2xl rounded-2xl'>
-        <h2 className='text-2xl'>Registeration</h2>
-        <form onSubmit={handleSubmit(signUp)}  className='mt-8 w-md flex flex-col gap-5'>
-          <Input {...register("name")} isInvalid={Boolean(formState.errors.name?.message)} 
-          errorMessage={formState.errors.name?.message} 
-          variant='bordered' label="Name" labelPlacement='outside' placeholder="Example" type="text" />
+  return (<div className="min-h-screen flex justify-center items-center px-4 sm:px-6">
+    <div className="bg-white py-10 px-6 sm:px-10 shadow-2xl rounded-2xl w-full max-w-md">
+      <h2 className="text-2xl font-bold text-center">Registeration</h2>
 
-          <Input {...register("email")} isInvalid={Boolean(formState.errors.email?.message)} 
-          errorMessage={formState.errors.email?.message} variant='bordered' label="Email" labelPlacement='outside' placeholder="name@Example.com" type="email" />
-          
-          <Input {...register("password")} isInvalid={Boolean(formState.errors.password?.message)} errorMessage={formState.errors.password?.message} variant='bordered' label="password" labelPlacement='outside' placeholder="Example@123" type="password" />
-          
-          <Input {...register("rePassword")} isInvalid={Boolean(formState.errors.rePassword?.message)} errorMessage={formState.errors.rePassword?.message} variant='bordered' label="Repassword" labelPlacement='outside' placeholder="Example@123" type="password" />
-          
-          <div className="flex gap-4">
-            <Input {...register("dateOfBirth")} isInvalid={Boolean(formState.errors.dateOfBirth?.message)} errorMessage={formState.errors.dateOfBirth?.message} variant='bordered' label="Date" labelPlacement='outside' placeholder="Example" type="date" />
-          
-            <Select {...register("gender")} isInvalid={Boolean(formState.errors.gender?.message)} errorMessage={formState.errors.gender?.message} variant='bordered' label="Gender" className='Pb-1' labelPlacement='outside-top'>
-              <SelectItem key= 'male'>Male</SelectItem>
-              <SelectItem key= 'female'>Female</SelectItem>
+      <form onSubmit={handleSubmit(signUp)} className="mt-8 flex flex-col gap-5">
+
+        {/* Name */}
+        <Input
+          {...register("name")}
+          isInvalid={Boolean(formState.errors.name?.message)}
+          errorMessage={formState.errors.name?.message}
+          variant="bordered"
+          label="Name"
+          labelPlacement="outside"
+          placeholder="Example"
+          type="text"
+        />
+
+        {/* Email */}
+        <Input
+          {...register("email")}
+          isInvalid={Boolean(formState.errors.email?.message)}
+          errorMessage={formState.errors.email?.message}
+          variant="bordered"
+          label="Email"
+          labelPlacement="outside"
+          placeholder="name@Example.com"
+          type="email"
+        />
+
+        {/* Password */}
+        <Input
+          {...register("password")}
+          isInvalid={Boolean(formState.errors.password?.message)}
+          errorMessage={formState.errors.password?.message}
+          variant="bordered"
+          label="Password"
+          labelPlacement="outside"
+          placeholder="Example@123"
+          type="password"
+        />
+
+        {/* Repassword */}
+        <Input
+          {...register("rePassword")}
+          isInvalid={Boolean(formState.errors.rePassword?.message)}
+          errorMessage={formState.errors.rePassword?.message}
+          variant="bordered"
+          label="Repassword"
+          labelPlacement="outside"
+          placeholder="Example@123"
+          type="password"
+        />
+
+        {/* Date & Gender */}
+        <div className="flex flex-col sm:flex-row gap-4">
+          <Input
+            {...register("dateOfBirth")}
+            isInvalid={Boolean(formState.errors.dateOfBirth?.message)}
+            errorMessage={formState.errors.dateOfBirth?.message}
+            variant="bordered"
+            label="Date of Birth"
+            labelPlacement="outside"
+            type="date"
+            className="flex-1"
+          />
+
+          <Select
+            {...register("gender")}
+            isInvalid={Boolean(formState.errors.gender?.message)}
+            errorMessage={formState.errors.gender?.message}
+            variant="bordered"
+            label="Gender"
+            labelPlacement="outside-top"
+            className="flex-1"
+          >
+            <SelectItem key="male">Male</SelectItem>
+            <SelectItem key="female">Female</SelectItem>
           </Select>
-          </div>
-          {apiError && <p className="text-red-500 text-center">{apiError}</p>}
-          <Button isLoading={loading} type='submit' variant='solid' color="primary">Register</Button>
-          <p className="text-center text-sm text-gray-600 mt-4">
-            Already have an account?
-            <NavLink
-              to="/login"
-              className="ml-1 font-medium text-blue-600 hover:text-blue-700 hover:underline transition-colors"
-            >
-              Sign in
-            </NavLink>
-          </p>
-        </form>
-      </div>
-      
+        </div>
+
+        {/* API Error */}
+        {apiError && <p className="text-red-500 text-center">{apiError}</p>}
+
+        {/* Submit Button */}
+        <Button
+          isLoading={loading}
+          type="submit"
+          variant="solid"
+          color="primary"
+        >
+          Register
+        </Button>
+
+        {/* Sign In Link */}
+        <p className="text-center text-sm text-gray-600 mt-4">
+          Already have an account?
+          <NavLink
+            to="/login"
+            className="ml-1 font-medium text-blue-600 hover:text-blue-700 hover:underline transition-colors"
+          >
+            Sign in
+          </NavLink>
+        </p>
+      </form>
     </div>
+  </div>
+  );
 }

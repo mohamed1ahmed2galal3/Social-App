@@ -76,32 +76,87 @@ export default function PostCard({post , commentsLimit }) {
     }
   })
 
-  return <>
-    <div
-        className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800
-                rounded-2xl shadow-sm hover:shadow-md transition-shadow relative">
-            {isDeleting && <div className='bg-white/90 inset-0 z-20 absolute flex justify-center items-center'>
-            <Spinner/>
-            </div>}
-        <PostHeader photo={post.user.photo} name={post.user.name} date={post.createdAt} postId={post._id} userId={post.user._id} 
-          deletePost={deletePost} />
+  return (
+  <div
+    className="
+      bg-white dark:bg-slate-900
+      border border-slate-100 dark:border-slate-800
+      rounded-2xl shadow-sm hover:shadow-md transition-shadow
+      relative overflow-hidden
+    "
+  >
+    {isDeleting && (
+      <div className="bg-white/80 dark:bg-slate-900/80 inset-0 z-20 absolute flex justify-center items-center backdrop-blur-sm">
+        <Spinner />
+      </div>
+    )}
 
-        <PostBody body={post.body} image={post.image} id={post.id}/>
+    <PostHeader
+      photo={post.user.photo}
+      name={post.user.name}
+      date={post.createdAt}
+      postId={post._id}
+      userId={post.user._id}
+      deletePost={deletePost}
+    />
 
-        <PostFooter comment={comments} id={post.id} />
+    <PostBody body={post.body} image={post.image} id={post.id} />
 
-        <form onSubmit={isUpdatingComment ? updateComment :  createComment } className='flex gap-2 mb-2 px-4'>
-            <Input value={commentContent} onChange={(e)=>setCommentContent(e.target.value)} placeholder='Add Comment .....'/>
-            {isUpdatingComment ? <Button isLoading={loading} isDisabled={commentContent.length < 3 } type='submit' className='bg-blue-400'>Update</Button> :
-            <Button isLoading={loading} isDisabled={commentContent.length < 3 } type='submit' className='bg-blue-400'>Add Comment</Button>}
-        </form>
+    <PostFooter comment={comments} id={post.id} />
 
-        {comments.length > 0 && commentsLimit == false ?
-          <PostComment commentsLimit={commentsLimit} userId={post.user._id} comment={comments[0]} postId={post.id} sefFormForUpdate={sefFormForUpdate}
-          isUpdatingComment={isUpdatingComment} isDeletingComment={isDeletingComment} deleteComment={deleteComment}/>
-          :
-          comments.map((comment)=> <PostComment key={comment._id} comment= {comment} id={post.id}/>)
-        }
+    {/* ===== Comment Form ===== */}
+    <form
+      onSubmit={isUpdatingComment ? updateComment : createComment}
+      className="flex flex-col sm:flex-row gap-2 px-3 sm:px-4 pb-3"
+    >
+      <Input
+        value={commentContent}
+        onChange={(e) => setCommentContent(e.target.value)}
+        placeholder="Add comment..."
+        className="flex-1"
+      />
+
+      {isUpdatingComment ? (
+        <Button
+          isLoading={loading}
+          isDisabled={commentContent.length < 3}
+          type="submit"
+          className="bg-blue-500 w-full sm:w-auto"
+        >
+          Update
+        </Button>
+      ) : (
+        <Button
+          isLoading={loading}
+          isDisabled={commentContent.length < 3}
+          type="submit"
+          className="bg-blue-500 w-full sm:w-auto"
+        >
+          Add
+        </Button>
+      )}
+    </form>
+
+    {/* ===== Comments ===== */}
+    <div className="px-3 sm:px-4 pb-3 space-y-2">
+      {comments.length > 0 && commentsLimit == false ? (
+        <PostComment
+          commentsLimit={commentsLimit}
+          userId={post.user._id}
+          comment={comments[0]}
+          postId={post.id}
+          sefFormForUpdate={sefFormForUpdate}
+          isUpdatingComment={isUpdatingComment}
+          isDeletingComment={isDeletingComment}
+          deleteComment={deleteComment}
+        />
+      ) : (
+        comments.map((comment) => (
+          <PostComment key={comment._id} comment={comment} id={post.id} />
+        ))
+      )}
     </div>
-    </>
+  </div>
+);
+
 }
