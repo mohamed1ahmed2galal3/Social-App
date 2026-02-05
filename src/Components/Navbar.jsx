@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {
   Navbar as HeroNavbar,
   NavbarBrand,
@@ -13,6 +13,18 @@ import { AuthContext } from '../Context/AuthContext'
 
 export default function Navbar() {
 
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+  if(darkMode){
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+}, [darkMode]);
+
+
+
   const { isLoggedIn, setIsLoggedIn, setUserData } = useContext(AuthContext)
 
   function logOut() {
@@ -24,7 +36,7 @@ export default function Navbar() {
   return (
     <HeroNavbar
       maxWidth="xl"
-      className="bg-white border-b border-slate-100 px-3 shadow-sm"
+      className=" px-3 shadow-sm"
     >
       {/* Mobile Toggle */}
       <NavbarMenuToggle className="sm:hidden" />
@@ -63,6 +75,15 @@ export default function Navbar() {
                 Log out
               </button>
             </NavbarItem>
+            <NavbarItem>
+              <button
+                onClick={() => setDarkMode(prev => !prev)}
+                className="cursor-pointer text-sm font-medium text-slate-600 hover:text-blue-500 transition"
+              >
+                {darkMode ? 'Light Mode' : 'Dark Mode'}
+              </button>
+
+            </NavbarItem>
           </>
         ) : (
           <>
@@ -94,11 +115,20 @@ export default function Navbar() {
         {isLoggedIn ? (
           <>
             <NavbarMenuItem>
-              <Link to="profile">Profile</Link>
+              <Link to="profile" className="cursor-pointer text-sm font-medium text-slate-600 hover:text-blue-500 transition">Profile</Link>
+            </NavbarMenuItem>
+            <NavbarMenuItem>
+              <button
+                onClick={() => setDarkMode(prev => !prev)}
+                className="cursor-pointer text-sm font-medium text-slate-600 hover:text-blue-500 transition"
+              >
+                {darkMode ? 'Light Mode' : 'Dark Mode'}
+              </button>
             </NavbarMenuItem>
 
             <NavbarMenuItem>
-              <button onClick={logOut}>Log out</button>
+              <button className='cursor-pointer text-sm font-medium text-slate-600 hover:text-red-500 transition' 
+              onClick={logOut}>Log out</button>
             </NavbarMenuItem>
           </>
         ) : (
