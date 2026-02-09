@@ -34,9 +34,9 @@ export default function Navbar() {
   }
 
   return (
-    <HeroNavbar
+    <HeroNavbar 
       maxWidth="xl"
-      className=" px-3 shadow-sm"
+      className=" px-3 shadow-sm "
     >
       {/* Mobile Toggle */}
       <NavbarMenuToggle className="sm:hidden" />
@@ -45,7 +45,7 @@ export default function Navbar() {
       <NavbarBrand>
         <Link
           to="/"
-          className="text-xl sm:text-2xl font-bold text-slate-800 tracking-tight"
+          className="text-xl sm:text-2xl font-bold text-slate-800 tracking-tight dark:text-white"
         >
           Social<span className="text-blue-500">App</span>
         </Link>
@@ -61,7 +61,7 @@ export default function Navbar() {
             <NavbarItem>
               <Link
                 to="profile"
-                className="text-sm font-medium text-slate-600 hover:text-blue-500 transition"
+                className="text-sm font-medium text-slate-600 hover:text-blue-500 transition dark:text-white"
               >
                 Profile
               </Link>
@@ -70,7 +70,7 @@ export default function Navbar() {
             <NavbarItem>
               <button
                 onClick={logOut}
-                className="cursor-pointer text-sm font-medium text-slate-600 hover:text-red-500 transition"
+                className="cursor-pointer text-sm font-medium text-slate-600 hover:text-red-500 transition dark:text-white"
               >
                 Log out
               </button>
@@ -78,7 +78,7 @@ export default function Navbar() {
             <NavbarItem>
               <button
                 onClick={() => setDarkMode(prev => !prev)}
-                className="cursor-pointer text-sm font-medium text-slate-600 hover:text-blue-500 transition"
+                className="cursor-pointer text-sm font-medium text-slate-600 hover:text-blue-500 transition dark:text-white"
               >
                 {darkMode ? 'Light Mode' : 'Dark Mode'}
               </button>
@@ -90,7 +90,7 @@ export default function Navbar() {
             <NavbarItem>
               <Link
                 to="login"
-                className="text-sm font-medium text-slate-600 hover:text-blue-500 transition"
+                className="text-sm font-medium text-slate-600 hover:text-blue-500 transition dark:text-white"
               >
                 Login
               </Link>
@@ -101,7 +101,7 @@ export default function Navbar() {
                 to="register"
                 className="px-4 py-2 rounded-full text-sm font-medium
                            border border-blue-500 text-blue-500
-                           hover:bg-blue-500 hover:text-white transition"
+                           hover:bg-blue-500 hover:text-white transition dark:text-white"
               >
                 Register
               </Link>
@@ -115,19 +115,19 @@ export default function Navbar() {
         {isLoggedIn ? (
           <>
             <NavbarMenuItem>
-              <Link to="profile" className="cursor-pointer text-sm font-medium text-slate-600 hover:text-blue-500 transition">Profile</Link>
+              <Link to="profile" className="cursor-pointer text-sm font-medium text-slate-600 hover:text-blue-500 transition dark:text-white">Profile</Link>
             </NavbarMenuItem>
             <NavbarMenuItem>
               <button
                 onClick={() => setDarkMode(prev => !prev)}
-                className="cursor-pointer text-sm font-medium text-slate-600 hover:text-blue-500 transition"
+                className="cursor-pointer text-sm font-medium text-slate-600 hover:text-blue-500 transition dark:text-white"
               >
                 {darkMode ? 'Light Mode' : 'Dark Mode'}
               </button>
             </NavbarMenuItem>
 
             <NavbarMenuItem>
-              <button className='cursor-pointer text-sm font-medium text-slate-600 hover:text-red-500 transition' 
+              <button className='cursor-pointer text-sm font-medium text-slate-600 hover:text-red-500 transition dark:text-white' 
               onClick={logOut}>Log out</button>
             </NavbarMenuItem>
           </>
